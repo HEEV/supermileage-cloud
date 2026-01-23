@@ -1,6 +1,6 @@
 # supermileage-cloud
 
-Our backend server functionality hosted on Cedarville hardware at \<insert URL here\>. The backend consists of 3 main parts: a MQTT instance, a Next.js deployment, and a proxy.
+Our backend server functionality hosted on Cedarville hardware at supermileage.cedarville.edu. The backend consists of 3 main parts: a MQTT instance, a Next.js deployment, and a proxy.
 
 ## Architecture Overview
 

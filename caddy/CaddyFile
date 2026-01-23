@@ -1,0 +1,14 @@
+supermileage.cedarville.edu {
+    # Route MQTT WebSocket traffic
+    handle /mqtt {
+        reverse_proxy mosquitto:9001
+    }
+
+    # Route everything else to the Webpage
+    handle {
+        # This will point to website
+        # reverse_proxy web_interface:80
+        
+        respond "Web interface coming soon!" 200
+    }
+}

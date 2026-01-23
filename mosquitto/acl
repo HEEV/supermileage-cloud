@@ -1,0 +1,23 @@
+#each car publishes to two topics: data and config
+#each car subscribes to two pit topics: config and chat
+
+user car_a
+topic write cars/car_a/data
+topic write cars/car_a/config
+topic read pit/config/car_a
+topic readwrite pit/chat/car_a
+
+user car_b
+topic write cars/car_b/data
+topic write cars/car_b/config
+topic read pit/config/car_b
+topic readwrite pit/chat/car_b
+
+#pit crew publishes config and chat messages to any car
+#pit crew subscribes to any car's topics
+
+user pit_crew
+topic read cars/+/data
+topic read cars+/config
+topic write pit/config/+
+topic readwrite pit/chat/+
