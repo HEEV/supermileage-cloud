@@ -20,5 +20,5 @@ user pits_crew
 # + matches any car: car_a or car_b
 topic readwrite cars/+/data
 topic readwrite cars/+/config
-topic readwrite pit/config/+
 topic readwrite pit/chat/+
+topic readwrite pit/config/+
