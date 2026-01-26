@@ -1,4 +1,4 @@
-supermileage.cedarville.edu {
+http://supermileage.cedarville.edu {
     # Route MQTT WebSocket traffic
     handle /mqtt {
         reverse_proxy mosquitto:9001

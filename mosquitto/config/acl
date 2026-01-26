@@ -16,8 +16,8 @@ topic readwrite pit/chat/car_b
 #pit crew publishes config and chat messages to any car
 #pit crew subscribes to any car's topics
 
-user pit_crew
-topic read cars/+/data
-topic read cars+/config
+user pits_crew
+topic read cars/car_a/data
+topic read cars/+/config
 topic write pit/config/+
 topic readwrite pit/chat/+
