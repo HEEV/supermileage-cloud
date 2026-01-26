@@ -1,6 +1,6 @@
 # supermileage-cloud
 
-Our backend server functionality hosted on Cedarville hardware at \<insert URL here\>. The backend consists of 3 main parts: a MQTT instance, a Next.js deployment, and a proxy.
+Our backend server functionality hosted on Cedarville hardware at supermileage.cedarville.edu. The backend consists of 3 main parts: a MQTT instance, a Next.js deployment, and a proxy.
 
 ## Architecture Overview
 
@@ -15,3 +15,6 @@ MQTT is our chosen protocol for managing the connection between the cars and the
 ### Pits Display
 
 The Next.js instance that contains the Pits Display. This will most likely be the most resource-intensive and unpredictable portion of the deployment, as we will expect to have the general public to be able to connect to this endpoint and view the website.
+
+### Usage
+To deploy this server, clone this repository and run `docker compose up -d` to start the container and `docker compose down` to shut down the container.
