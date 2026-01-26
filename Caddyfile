@@ -1,6 +1,6 @@
 :80 {
     # Route MQTT WebSocket traffic
-    handle /mqtt* {
+    handle_path /mqtt* {
         uri strip_prefix
         reverse_proxy mosquitto:9001
     }
