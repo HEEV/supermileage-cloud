@@ -4,14 +4,12 @@
 user car_a
 # + matches a data topic and a config topic
 topic readwrite cars/car_a/+
-# + matches a config topic and a chat topic
-topic readwrite pit/+/car_a
+topic readwrite pit/chat/car_a
 
 user car_b
 # + matches a data topic and a config topic
 topic readwrite cars/car_b/+
-# + matches a config topic and a chat topic
-topic readwrite pit/+/car_b
+topic readwrite pit/chat/car_b
 
 #pit crew publishes config and chat messages to any car
 #pit crew subscribes to any car's topics
@@ -21,4 +19,4 @@ user pits_crew
 topic readwrite cars/+/data
 topic readwrite cars/+/config
 topic readwrite pit/chat/+
-topic readwrite pit/config/+
+
