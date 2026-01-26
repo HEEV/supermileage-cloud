@@ -17,7 +17,7 @@ topic readwrite pit/chat/car_b
 #pit crew subscribes to any car's topics
 
 user pits_crew
-topic read cars/car_a/data
+topic read cars/+/data
 topic read cars/+/config
 topic write pit/config/+
 topic readwrite pit/chat/+
