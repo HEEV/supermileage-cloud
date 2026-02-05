@@ -2,14 +2,18 @@ services:
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
-    restart: always
+    restart: unless-stopped
     ports:
      - "1883:1883"
      - "9001:9001"
+    environment:
+      MOSQUITTO_USERS_JSON: ${MOSQUITTO_USERS_JSON}
     volumes:
      - ./mosquitto/config:/mosquitto/config
      - ./mosquitto/data:/mosquitto/data
      - ./mosquitto/log:/mosquitto/log
+     - ./mosquitto/entrypoint.sh:/mosquitto/entrypoint.sh:ro
+    entrypoint: ["/mosquitto/entrypoint.sh"]
     networks:
       - mqtt-net
 
