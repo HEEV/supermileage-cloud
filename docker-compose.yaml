@@ -7,7 +7,7 @@ services:
      - "1883:1883"
      - "9001:9001"
     environment:
-      MOSQUITTO_USERS_JSON: ${MOSQUITTO_USERS_JSON}
+     - MOSQUITTO_USERS_B64 
     volumes:
      - ./mosquitto/config:/mosquitto/config
      - ./mosquitto/data:/mosquitto/data

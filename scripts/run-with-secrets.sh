@@ -1,14 +1,29 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SECRETS_FILE="secrets/dev.yaml"
-TMP_FILE="$(mktemp)"
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+SECRETS_FILE="$ROOT_DIR/mosquitto/secrets/dev.yaml"
 
-cleanup() { rm -f "$TMP_FILE"; }
-trap cleanup EXIT
+echo "Using secrets file: $SECRETS_FILE"
 
-sops -d "$SECRETS_FILE" > "$TMP_FILE"
+if [ ! -f "$SECRETS_FILE" ]; then
+  echo "ERROR: Secrets file not found at $SECRETS_FILE" >&2
+  exit 1
+fi
 
-export MOSQUITTO_USERS_JSON=$(yq -o=json '.mosquitto.users' "$TMP_FILE")
+# Decrypt and extract users
+MOSQUITTO_USERS_B64="$(
+  sops -d "$SECRETS_FILE" \
+    | yq -o=json '.mosquitto.users' \
+    | jq -r 'to_entries[] | "\(.key):\(.value)"' \
+    | base64 -w 0
+)"
 
-docker compose up -d
+if [ -z "$MOSQUITTO_USERS_B64" ] || [ "$MOSQUITTO_USERS_B64" = "null" ]; then
+  echo "ERROR: mosquitto.users is empty or missing" >&2
+  exit 1
+fi
+
+export MOSQUITTO_USERS_B64
+
+docker compose -f "$ROOT_DIR/docker-compose.yaml" up -d
