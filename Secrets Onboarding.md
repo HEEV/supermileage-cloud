@@ -22,10 +22,10 @@ Go here for latest release: https://github.com/getsops/sops/releases
 `age-keygen -o ~/.config/sops/age/keys.txt`
 
 - Keep the private key safe on your machine; copy the public key to secrets/.sops.yaml
+- add public key to .sops.yaml
+- run `sops updatekeys mosquitto/secrets/dev.yaml`
 
-## To add/remove Mosquitto Users
-- Add username and password to secrets/dev.yaml
-- Encrypt the file: `sops -e -i secrets/dev.yaml`
 
-## To add subscriber/publisher users to the dev.yaml file:
-`sops mosquitto/secrets/dev.yaml` opens the dev.yaml file in an editor that will encrypt upon saving the file. 
+## To add/remove subscribers/publishers to the dev.yaml file:
+- `sops mosquitto/secrets/dev.yaml` opens the dev.yaml file in a vim editor that will encrypt upon saving the file. 
+- The topics for any new members must be added to the mosquitto/config/acl file
