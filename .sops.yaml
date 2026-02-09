@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: mosquitto/secrets/.*\.yaml$
+    age: age17n68swgcu4yfhl8fyldu0a0rjqrj4mzjvu9un47w72ak0j8y393sn5xtwy
