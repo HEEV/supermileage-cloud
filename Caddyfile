@@ -1,7 +1,22 @@
-:80 {
+{
+    auto_https off
+}
+
+:443 {
     # Route MQTT WebSocket traffic
     handle_path /mqtt* {
-        uri strip_prefix
+        reverse_proxy mosquitto:9001
+    }
+
+    # Route everything else to the Webpage
+    handle {
+        # This will point to website
+
+        respond "Web interface coming soon!" 200
+    }
+} {
+    # Route MQTT WebSocket traffic
+    handle_path /mqtt* {
         reverse_proxy mosquitto:9001
     }
 
