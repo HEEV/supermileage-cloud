@@ -1,0 +1,9 @@
+
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+
+# secrets
+users.json
+jwt_private.pem

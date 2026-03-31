@@ -1,14 +1,20 @@
-:80 {
+{
+    auto_https off
+}
+
+:443 {
     # Route MQTT WebSocket traffic
-    handle_path /mqtt* {
-        uri strip_prefix
+    handle /mqtt* {
         reverse_proxy mosquitto:9001
+    }
+
+    handle /auth* {
+	reverse_proxy mqtt-backend:3000
     }
 
     # Route everything else to the Webpage
     handle {
         # This will point to website
-        
-        respond "Web interface coming soon!" 200
+        redir https://supermileage-display-web-pits.pages.dev{uri} 302
     }
 }
