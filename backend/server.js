@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const app = express()
 app.use(express.json())
 
-const PRIVATE_KEY = process.env.JWT_SECRET
+const PRIVATE_KEY = fs.readFileSync('/app/jwt_secret')
 
 const users = require('/app/users.json')
 

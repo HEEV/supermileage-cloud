@@ -26,8 +26,7 @@ services:
       - "3000:3000"
     volumes:
       - ./backend/users.json:/app/users.json:ro
-    environment:
-      - JWT_SECRET=ccb9f1e58a4d0332f844d2c3a53b15274a99fc8fe34abf45cce1d2cf87e8994e
+      - ./backend/jwt_secret:/app/jwt_secret:ro
     networks:
       - mqtt-net
   caddy:

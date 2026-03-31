@@ -6,4 +6,3 @@ Dockerfile
 
 # secrets
 users.json
-jwt_private.pem
