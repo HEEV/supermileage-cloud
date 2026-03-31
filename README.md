@@ -17,4 +17,8 @@ MQTT is our chosen protocol for managing the connection between the cars and the
 The Next.js instance that contains the Pits Display. This will most likely be the most resource-intensive and unpredictable portion of the deployment, as we will expect to have the general public to be able to connect to this endpoint and view the website.
 
 ### Usage
-To deploy this server, clone this repository and follow the instructions in Secrets Onboarding. Once onboarding is complete, run `./scripts/run-with-secrets.sh` to start the container and `docker compose down` to shut down the container (scripts use jq and yq, so ensure the machine has these installed).
++ To deploy this server, clone this repository and follow the instructions in Secrets Onboarding. 
++ Once onboarding is complete, run `./scripts/run-with-secrets.sh` to start the container and generate secrets and `docker compose down` to shut down the container. 
++ Subsequent docker container set ups can just be launched running `docker compose up -d` unless refreshing the passwd file with new users is desired.
+
+*Note: Scripts use jq and yq, so ensure the machine has these installed. Also, ensure that scripts/run-with-secrets.sh and mosquitto/entrypoint.sh are executable.*
