@@ -1,0 +1,9 @@
+{
+	"name": "mqtt-backend",
+	"version": "1.0.0",
+	"dependencies": {
+		"bcrypt": "^6.0.0",
+		"express": "^5.2.1",
+		"jsonwebtoken": "^9.0.3"
+	}
+}

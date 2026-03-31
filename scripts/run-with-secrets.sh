@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export SOPS_AGE_KEY_FILE='/home/supermileage-admin/.config/sops/age/keys.txt'
+
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 SECRETS_FILE="$ROOT_DIR/mosquitto/secrets/dev.yaml"
 

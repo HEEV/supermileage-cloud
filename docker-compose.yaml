@@ -1,6 +1,6 @@
 services:
   mosquitto:
-    image: eclipse-mosquitto:latest
+    image: docker.io/iegomez/mosquitto-go-auth:latest
     container_name: mosquitto
     restart: unless-stopped
     ports:
@@ -14,18 +14,32 @@ services:
      - ./mosquitto/log:/mosquitto/log
      - ./mosquitto/entrypoint.sh:/mosquitto/entrypoint.sh:ro
     entrypoint: ["/mosquitto/entrypoint.sh"]
+    depends_on:
+      - backend
     networks:
       - mqtt-net
-
+  backend:
+    build: ./backend
+    container_name: mqtt-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/users.json:/app/users.json:ro
+      - ./backend/jwt_secret:/app/jwt_secret:ro
+    networks:
+      - mqtt-net
   caddy:
     image: caddy:latest
     container_name: caddy
     restart: unless-stopped
     ports:
-    #  - "8080:80"
+#      - "80:80"
       - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - /etc/ssl/certs:/etc/ssl/certs:ro
+      - /etc/ssl/private:/etc/ssl/private:ro
     networks:
       - mqtt-net
 

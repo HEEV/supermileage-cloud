@@ -1,1 +1,7 @@
 /mosquitto/data/*
+
+# backend-related files
+node_modules
+users.json
+package-lock.json
+jwt_secret

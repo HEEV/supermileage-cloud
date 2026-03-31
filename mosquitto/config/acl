@@ -1,6 +1,14 @@
 #each car publishes to two topics: data and config
 #each car subscribes to two pit topics: config and chat
 
+# ----------------
+# Anonymous Users
+# ----------------
+pattern read cars/+/data
+
+# --------------------
+# Authenticated Users
+# --------------------
 user karch
 # + matches a data topic and a config topic
 topic readwrite cars/karch/+
