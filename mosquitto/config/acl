@@ -11,12 +11,14 @@ pattern read cars/+/data
 # --------------------
 user karch
 # + matches a data topic and a config topic
-topic readwrite cars/karch/+
+topic readwrite cars/karch/data
+topic readwrite cars/config
 topic readwrite pit/chat/karch
 
 user sting
 # + matches a data topic and a config topic
 topic readwrite cars/sting/+
+topic readwrite cars/config
 topic readwrite pit/chat/sting
 
 #pit crew publishes config and chat messages to any car
@@ -25,5 +27,5 @@ topic readwrite pit/chat/sting
 user pits_crew
 # + matches any car: car_a or car_b
 topic readwrite cars/+/data
-topic readwrite cars/+/config
+topic readwrite cars/config
 topic readwrite pit/chat/+
